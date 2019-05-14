@@ -23,7 +23,8 @@ public:
   Vector(): size_of_tab(0), capacity(0), data(nullptr){}
 
   Vector(const Vector& copy): size_of_tab(copy.size_of_tab), capacity(copy.size_of_tab), data(new T[copy.size_of_tab]){
-      data.reset(new T[size_of_tab]);
+     // data.reset(new T[size_of_tab]);
+     //copy(begin(container), end(container), data);
       for(size_t i=0; i<size_of_tab; ++i){
           data[i]=copy.data[i];
       }
@@ -43,11 +44,12 @@ public:
   }
 
   template<size_t N>
-  Vector(T(& staticArray) [N]): size_of_tab(N), capacity(N){
+  Vector(const T(& staticArray) [N]): size_of_tab(N), capacity(N){
       data.reset(new T[size_of_tab]);
       for(size_t i=0; i<size_of_tab; ++i){
           data[i]=staticArray[i];
       }
+      //copy(staticArray, staticArray +N, data);
   }
 
   Vector(initializer_list<T> in_list){
@@ -159,7 +161,7 @@ int main()
     for(int i=0; i<11; i++){
         b[i]=i;
     }
-//sfksndfksnk;
+
     Vector<int> a(b);
     Vector<int> c(move(a));
 
