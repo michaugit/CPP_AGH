@@ -159,7 +159,7 @@ int main()
     for(int i=0; i<11; i++){
         b[i]=i;
     }
-
+//sfksndfksnk;
     Vector<int> a(b);
     Vector<int> c(move(a));
 
